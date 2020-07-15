@@ -1,4 +1,16 @@
+"use strict"
+import { Api } from '../src/scripts/Api.js';
+import { FormValidator } from '../src/scripts/FormValidator.js';
+import { UserInfo } from '../src/scripts/UserInfo.js';
+import { Popup } from '../src/scripts/Popup.js';
+import { CardList } from '../src/scripts/CardList.js';
+import { Card } from '../src/scripts/Card.js';
+
+import './pages/index.css'
+
 (function(){
+
+
   // переменные
   const list = document.querySelector('.places-list');
   const addFormOpen = document.querySelector('.user-info__button');
@@ -17,8 +29,9 @@
   const formProfile = document.querySelector('.popup__form_type_profile');
   const addButtonProfile = document.querySelector('.popup__button_type_profile');
   const addButton = document.querySelector('.popup__button_disabled');
+  const serverUrl = NODE_ENV === 'development' ? 'http://praktikum.tk' : 'https://praktikum.tk'
   const config = {
-    url: 'https://praktikum.tk/cohort11', 
+    url: `${serverUrl}/cohort11`, 
       headers: {
         authorization: '9f8e0cc6-e90b-4d08-990d-9809078a2843',
         'Content-Type': 'application/json'
@@ -131,11 +144,3 @@
   });
 
 })();
-
-
-
-
-
-
-
-
