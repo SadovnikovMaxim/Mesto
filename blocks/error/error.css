@@ -1,0 +1,22 @@
+#name-profile-error {
+  color: #FF0000;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  position: absolute;
+  top: 175px;
+}
+
+#job-profile-error{
+  color: #FF0000;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  position: absolute;
+  top: 245px;
+  left: 37px;
+}
