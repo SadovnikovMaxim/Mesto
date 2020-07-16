@@ -1,4 +1,4 @@
-class CardList{
+export class CardList{
   constructor(item, container, callbackCard) {
     this.item = item;
     this.container = container;

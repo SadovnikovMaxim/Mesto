@@ -1,10 +1,12 @@
-class Card {
+export class Card {
   constructor(name, link, openImagePopup) {
   this.name = name;
   this.link = link;
 
   this.openImageCallback = openImagePopup;
   this.card = null;
+  this.getLink = this.getLink.bind(this)
+  this.openImage = this.openImage.bind(this)
   }
 
   create() {
@@ -31,12 +33,12 @@ class Card {
     return this.card;
   }
   
-  getLink = () => {
+  getLink () {
     const popupImg = document.querySelector('.popup__image');
     popupImg.src = this.link;
   }
 
-  openImage = () => {
+  openImage () {
     this.getLink();
     this.openImageCallback(this.link);
   }
