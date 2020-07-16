@@ -1,4 +1,4 @@
-"use strict"
+
 import { Api } from '../src/scripts/Api.js';
 import { FormValidator } from '../src/scripts/FormValidator.js';
 import { UserInfo } from '../src/scripts/UserInfo.js';
@@ -117,15 +117,17 @@ import './pages/index.css'
       console.log(`Ошибка: ${err}`); // выведем ошибку в консоль
     });
   })
-
+  const initialCards = [
+    {
+    }] // Пустой массив, т.к. карточки не подгружаются с сервера
   //Добавление новой карточки
   form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const name = form.querySelector('.popup__input_type_name').value;
     const link = form.querySelector('.popup__input_type_link-url').value;
-
-    cardList.addCard(name, link);
+    const cardLists = new CardList(initialCards, list, callbackCard);
+    cardLists.addCard(name, link);
 
     form.reset();
     popupAdd.close();

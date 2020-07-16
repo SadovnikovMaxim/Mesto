@@ -1,94 +1,97 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const WebpackMd5Hash = require('webpack-md5-hash');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const isDev = process.env.NODE_ENV === 'development';
+const WebpackMd5Hash = require("webpack-md5-hash");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const isDev = process.env.NODE_ENV === "development";
 
 module.exports = {
-	entry: './src/index.js',
-	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: '[name].[chunkhash].js'
-	},
+  entry: "./src/index.js",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].[chunkhash].js",
+  },
 
-	module: {
-		rules: [
-			{
-				test: /\.js$/,
-				use: { loader: 'babel-loader' },
-				exclude: /node_modules/
-			},
-			{
-        test: /\.css$/i,
-         use: [(isDev ? 'style-loader' : MiniCssExtractPlugin.loader), 
-               {
-    loader:'css-loader',
-    options: {
-        importLoaders: 2
-    } 
-}, 'postcss-loader']
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: { loader: "babel-loader" },
+        exclude: /node_modules/,
       },
-			{
-				test: /\.(woff|woff2|ttf)$/,
-				use: 'file-loader?name=./fonts/[name].[ext]'
-			},
-        {
+      {
+        test: /\.css$/i,
+        use: [
+          isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 2,
+            },
+          },
+          "postcss-loader",
+        ],
+      },
+      {
+        test: /\.(woff|woff2|ttf)$/,
+        use: "file-loader?name=./fonts/[name].[ext]",
+      },
+      {
         test: /\.(svg|jpe?g|png|gif)$/i,
         use: [
           {
-          loader: 'file-loader',
-          options: {
-            name: './images/[name].[ext]',
-            esModule: false,
+            loader: "file-loader",
+            options: {
+              name: "./images/[name].[ext]",
+              esModule: false,
             },
           },
           {
-          loader: "image-webpack-loader",
-          options: {
-            esModule: false,
-            mozjpeg: {
-              progressive: true,
-              ouality: 65
+            loader: "image-webpack-loader",
+            options: {
+              esModule: false,
+              mozjpeg: {
+                progressive: true,
+                ouality: 65,
               },
-            optipng: {
-              enabled: false,
+              optipng: {
+                enabled: false,
               },
-            pngquant: {
-              quality: [0.65, 0.90],
-              speed: 4
+              pngquant: {
+                quality: [0.65, 0.9],
+                speed: 4,
               },
-            gifsicle: {
-              interlaced: false,
+              gifsicle: {
+                interlaced: false,
               },
-            webp: {
-              quality: 75
-              }
-            }
-          }
-		]
+              webp: {
+                quality: 75,
+              },
+            },
+          },
+        ],
+      },
+    ],
   },
-    ]
-  },
-	plugins: [
+  plugins: [
     new webpack.DefinePlugin({
-      'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
     }),
-		new HtmlWebpackPlugin({
-			template: './src/index.html',
-		}),
-		new MiniCssExtractPlugin({
-			filename: '[name].[contenthash].css'
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css",
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,
-      cssProcessor: require('cssnano'),
+      cssProcessor: require("cssnano"),
       cssProcessorPluginOptions: {
-              preset: ['default'],
+        preset: ["default"],
       },
-      canPrint: true
+      canPrint: true,
     }),
-		new WebpackMd5Hash()
-	]
-}
+    new WebpackMd5Hash(),
+  ],
+};
