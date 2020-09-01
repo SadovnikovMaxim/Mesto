@@ -29,7 +29,7 @@ import './pages/index.css'
   const formProfile = document.querySelector('.popup__form_type_profile');
   const addButtonProfile = document.querySelector('.popup__button_type_profile');
   const addButton = document.querySelector('.popup__button_disabled');
-  const serverUrl = NODE_ENV === 'development' ? 'http://praktikum.tk' : 'https://praktikum.tk'
+  const serverUrl = NODE_ENV === 'development' ? 'http://nomoreparties.co' : 'https://nomoreparties.co'
   const config = {
     url: `${serverUrl}/cohort11`, 
       headers: {
