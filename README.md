@@ -33,4 +33,4 @@ ES6, Babel, OOП, CSS3, HTML5, Webpack, БЭМ
 - Разместить production-билд на github pages - `npm run deploy`
 
 ## Ссылка на github pages:
-https://sadovnikovmaxim.github.io/Homework_11.github.io/
+https://sadovnikovmaxim.github.io/Mesto/
